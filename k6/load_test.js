@@ -5,9 +5,9 @@ export let options = {
     stages: [
         { duration: '5s', target: 0 },
         { duration: '5s', target: 50 },
-        { duration: '10s', target: 100 },
-        { duration: '15s', target: 300 },
-        { duration: '10s', target: 100 },
+        { duration: '10s', target: 70 },
+        { duration: '10s', target: 150 },
+        { duration: '10s', target: 70 },
         { duration: '5s', target: 50 },
         { duration: '5s', target: 0 }
     ],
@@ -67,10 +67,10 @@ export function 로그인_확인(로그인_토큰) {
         'Login Success': (resp) => resp.json('accessToken') !== '',
     });
 }
-export function 내정보_요청(발급된_토큰) {
+export function 내정보_요청(로그인_토큰) {
     let authHeaders = {
         headers: {
-            Authorization: `Bearer ${발급된_토큰.json('accessToken')}`,
+            Authorization: `Bearer ${로그인_토큰.json('accessToken')}`,
         },
     };
     return http.get(`${BASE_URL}/members/me`, authHeaders).json();
